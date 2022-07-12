@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div className="w-full bg-black text-white">
-      <div className="w-3/4 m-auto py-5 flex justify-between items-center font-helvetica">
+  <div className="w-full bg-black text-white">
+      <div className="w-3/4 m-auto py-3 flex justify-between items-center font-helvetica">
         <div className="text-xl whitespace-nowrap">
           <h1 className="uppercase">MiniGame web</h1>
         </div>

@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import Navigation from "./components/Navigation";
 import Wordle from "./screens/Wordle";
 import Minesearcher from "./screens/Minesearcher";
+import Sudoku from "./screens/Sudoku";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/wordle" element={<Wordle />} />
           <Route path="/mines" element={<Minesearcher />} />
-          <Route path="/sudoku" element={<div>sudoku</div>} />
+          <Route path="/sudoku" element={<Sudoku />} />
         </Routes>
       </BrowserRouter>
     </div>
