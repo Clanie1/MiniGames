@@ -5,16 +5,16 @@ interface index {
   colum: number;
   element: any;
   handdler: Function;
+  changeFlag: Function;
 }
 
-const Land = ({ row, colum, element, handdler }: index) => {
+const Land = ({ row, colum, element, handdler, changeFlag }: index) => {
   let colorHover: string;
   if (!element.state) {
     colorHover = " bg-white hover:bg-gray-500 duration-100";
   } else {
     colorHover = "";
   }
-  const [flag, setFlag] = useState(false);
 
   window.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
@@ -22,13 +22,13 @@ const Land = ({ row, colum, element, handdler }: index) => {
       className={"w-10 h-10 border-2 text-mb " + colorHover}
       onClick={() => handdler(row, colum)}
       onContextMenu={() => {
-        setFlag(!flag);
+        changeFlag(row, colum);
       }}
       id="cuadro"
     >
       {!element.state ? (
-        flag ? (
-          <div className="w-full h-full flex justify-center items-center">
+        element.flag ? (
+          <div className="w-full h-full flex items-center justify-center font-bold text-white">
             🚩
           </div>
         ) : (

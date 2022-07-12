@@ -7,7 +7,7 @@ const Minesearcher = () => {
 
   return (
     <div className="bg-blue-100 w-screen h-screen relative">
-      <div className="w-3/4 max-w-screen-lg m-auto border-2">
+      <div className="w-3/4 max-w-screen-lg m-auto">
         {win ? <Result /> : ""}
         <h1 className="text-center uppercase font-helvetica font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-600 whitespace-nowrap mt-10">
           Mine search

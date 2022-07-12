@@ -12,6 +12,7 @@ const MinedLand = ({ setWin }: rules) => {
   interface box {
     val: number;
     state: boolean;
+    flag: boolean;
   }
 
   const [land, setLand] = useState<box[][]>([]);
@@ -27,7 +28,7 @@ const MinedLand = ({ setWin }: rules) => {
     for (let i = 0; i < rows; i++) {
       let temp: box[] = [];
       for (let j = 0; j < columns; j++) {
-        temp.push({ val: 0, state: false });
+        temp.push({ val: 0, state: false, flag: false });
       }
       arr.push(temp);
     }
@@ -58,6 +59,12 @@ const MinedLand = ({ setWin }: rules) => {
       }
     }
     return arr;
+  };
+
+  const changeFlag = (i: number, j: number) => {
+    let arr = [...land];
+    arr[i][j].flag = !arr[i][j].flag;
+    setLand(arr);
   };
 
   useEffect(() => {
@@ -111,7 +118,6 @@ const MinedLand = ({ setWin }: rules) => {
                 arr[newRow][newColum].val !== 9 &&
                 arr[newRow][newColum].state === false
               ) {
-                // counter++;
                 spreed(newRow, newColum);
               }
             }
@@ -138,6 +144,7 @@ const MinedLand = ({ setWin }: rules) => {
                     colum={j}
                     element={element}
                     handdler={handleClick}
+                    changeFlag={changeFlag}
                   />
                 );
               })}
