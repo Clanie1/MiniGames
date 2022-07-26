@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Wordle from "./screens/Wordle";
 import Minesearcher from "./screens/Minesearcher";
 import Sudoku from "./screens/Sudoku";
+import { useEffect } from "react";
 
 function App() {
   return (

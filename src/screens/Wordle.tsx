@@ -1,4 +1,5 @@
 import WordleWordGrid from "../components/wordle/WordleWordGrid";
+import { useEffect } from "react";
 const Wordle = () => {
   return (
     <div className="bg-red-50 w-full min-h-screen">
