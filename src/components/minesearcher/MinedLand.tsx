@@ -69,6 +69,10 @@ const MinedLand = ({ setWin }: rules) => {
 
   useEffect(() => {
     reset();
+    window.addEventListener("contextmenu", (event) => event.preventDefault());
+    return window.removeEventListener("contextmenu", (event) =>
+      event.preventDefault()
+    );
   }, []);
 
   const reset = () => {

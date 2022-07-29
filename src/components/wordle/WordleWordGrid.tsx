@@ -4,12 +4,16 @@ import Row from "./Row";
 import { write } from "fs";
 
 const WordleWordGrid = () => {
-  const WORDSTR = "AVION";
+  const WORDSTR = "MORIR";
   const [guested, setGuested] = useState<any>([]);
   const [words, setWords] = useState(["", "", "", "", ""]);
   const [word, setWord] = useState(WORDSTR);
+  const [win, setWin] = useState(false);
 
   const handdler = (e: any) => {
+    if (win == true) {
+      return;
+    }
     let index = -1;
     let last = 0;
     for (let i = 0; i < words.length; i++) {
@@ -49,12 +53,18 @@ const WordleWordGrid = () => {
     for (let i = 0; i < str.length; i++) {
       ans.push({ letter: str.charAt(i) });
     }
+    let count = 0;
     for (let i = 0; i < str.length; i++) {
       if (word.charAt(i) === str.charAt(i)) {
+        count++;
         ans[i]["value"] = "correct";
         dicc[word.charAt(i)]--;
       }
     }
+    if (count == word.length) {
+      setWin(true);
+    }
+    console.log(count, word.length);
     for (let i = 0; i < str.length; i++) {
       if ("value" in ans[i]) {
         continue;
@@ -67,6 +77,12 @@ const WordleWordGrid = () => {
       }
     }
     return ans;
+  };
+
+  const reset = () => {
+    setGuested([]);
+    setWords(["", "", "", "", ""]);
+    setWin(false);
   };
 
   useEffect(() => {
@@ -86,10 +102,27 @@ const WordleWordGrid = () => {
         );
       })}
       <div className="flex gap-2">
-        {words.map((obj, index) => {
-          return <LetterBox letter={obj} type="normal" key={index} />;
-        })}
+        {win
+          ? ""
+          : words.map((obj, index) => {
+              return <LetterBox letter={obj} type="normal" key={index} />;
+            })}
       </div>
+      {win ? (
+        <div className="flex flex-col items-center justify-center gap-2">
+          <h1 className="font-bold text-red-500 text-3xl">YOU WIN</h1>
+          <div className="">
+            <div
+              className="w-fit border-2 border-red-500 bg-red-400 text-white font-bold rounded-xl px-3 py-1 cursor-pointer hover:text-red-500 hover:bg-white duration-100"
+              onClick={reset}
+            >
+              RESET
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

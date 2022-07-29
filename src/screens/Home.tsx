@@ -1,6 +1,7 @@
 import image from "../img/kid.png";
 import mineLogo from "../img/Explotion.png";
 import Juego from "../components/inicio/Juego";
+import Palabra from "../img/letras.png";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
           <div className=" mt-10 shadow hover:shadow-lg hover:p-5 duration-100 bg-slate-100 rounded space-y-5 p-4">
             <h1 className="uppercase font-bold">Juegos Terminados</h1>
             <Juego title="Mine Search" image={mineLogo} />
+            <Juego title="Wordle" image={Palabra} />
           </div>
         </div>
         <div className="">

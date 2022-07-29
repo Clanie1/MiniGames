@@ -16,7 +16,6 @@ const Land = ({ row, colum, element, handdler, changeFlag }: index) => {
     colorHover = "";
   }
 
-  window.addEventListener("contextmenu", (event) => event.preventDefault());
   return (
     <div
       className={"w-10 h-10 border-2 text-mb " + colorHover}

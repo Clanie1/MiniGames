@@ -8,16 +8,13 @@ interface box {
 const Row = ({ info }: box) => {
   return (
     <div className="flex gap-2">
-      {info.map((obj: any) => {
+      {info.map((obj: any, index: any) => {
         return (
           <div className="h-10 w-10 border-5">
-            <LetterBox letter={obj["letter"]} type={obj["value"]} />
+            <LetterBox letter={obj["letter"]} type={obj["value"]} key={index} />
           </div>
         );
       })}
-      {/* {array.map((obj, index) => {
-        return <LetterBox letter={obj} type="normal" key={index} />;
-      })} */}
     </div>
   );
 };
