@@ -15,7 +15,7 @@ const Home = () => {
           <h3 className="text-gray-400 ml-3">Por: Daniel Barocio</h3>
           <div className=" mt-10 shadow hover:shadow-lg hover:p-5 duration-100 bg-slate-100 rounded space-y-5 p-4">
             <h1 className="uppercase font-bold">Juegos Terminados</h1>
-            <Juego title="Mine Search" image={mineLogo} />
+            <Juego title="Minesweeper" image={mineLogo} />
             <Juego title="Wordle" image={Palabra} />
           </div>
         </div>

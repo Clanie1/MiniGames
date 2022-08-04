@@ -25,7 +25,7 @@ const Navigation = () => {
               to="/Mines"
               className="rounded-lg text-white hover:bg-white hover:text-blue-500 px-2 py-1 duration-100 font-bold"
             >
-              MineSearch
+              Minesweeper
             </Link>
             <Link
               to="/Sudoku"

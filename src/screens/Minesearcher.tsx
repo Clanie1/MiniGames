@@ -10,7 +10,7 @@ const Minesearcher = () => {
       <div className="w-3/4 max-w-screen-lg m-auto py-5">
         {win ? <Result /> : ""}
         <h1 className="text-center uppercase font-helvetica font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-blue-700 via-blue-500 to-blue-600 whitespace-nowrap">
-          Mine search
+          Minesweeper
         </h1>
         <MinedLand setWin={setWin} />
       </div>

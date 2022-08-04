@@ -8,10 +8,10 @@ const WordleWordGrid = () => {
   const [guested, setGuested] = useState<any>([]);
   const [words, setWords] = useState(["", "", "", "", ""]);
   const [word, setWord] = useState(WORDSTR);
-  const [win, setWin] = useState(false);
+  const [win, setWin] = useState("playing");
 
   const handdler = (e: any) => {
-    if (win == true) {
+    if (win == "win") {
       return;
     }
     let index = -1;
@@ -33,8 +33,11 @@ const WordleWordGrid = () => {
     } else if (e.key === "Backspace" && index !== 0) {
       array[last] = "";
       setWords([...array]);
-    } else if (e.key !== "Backspace" && e.key !== "Enter") {
-      array[index] = e.key.toUpperCase();
+    } else if (e.key !== "Backspace" && e.key !== "Enter" && e.key.length < 2) {
+      const letter = e.key.toUpperCase()
+      const aschii = letter.charCodeAt(0)
+      console.log(aschii)
+      array[index] = letter;
       setWords([...array]);
     }
   };
@@ -62,9 +65,8 @@ const WordleWordGrid = () => {
       }
     }
     if (count == word.length) {
-      setWin(true);
+      setWin("win");
     }
-    console.log(count, word.length);
     for (let i = 0; i < str.length; i++) {
       if ("value" in ans[i]) {
         continue;
@@ -82,7 +84,7 @@ const WordleWordGrid = () => {
   const reset = () => {
     setGuested([]);
     setWords(["", "", "", "", ""]);
-    setWin(false);
+    setWin("playing");
   };
 
   useEffect(() => {
@@ -102,13 +104,13 @@ const WordleWordGrid = () => {
         );
       })}
       <div className="flex gap-2">
-        {win
+        {win != "playing"
           ? ""
           : words.map((obj, index) => {
               return <LetterBox letter={obj} type="normal" key={index} />;
             })}
       </div>
-      {win ? (
+      {win != "playing"? (
         <div className="flex flex-col items-center justify-center gap-2">
           <h1 className="font-bold text-red-500 text-3xl">YOU WIN</h1>
           <div className="">
