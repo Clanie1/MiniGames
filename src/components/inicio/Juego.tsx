@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 interface juego {
   title: string;
   image: string;
+  link:string,
+  children:any
 }
 
-const Juego = ({ title, image }: juego) => {
+const Juego = ({ title, image, link, children }: juego) => {
   const [description, setDescription] = useState(false);
 
   return (
@@ -30,11 +32,10 @@ const Juego = ({ title, image }: juego) => {
       {description ? (
         <div className="flex flex-col space-y-2 px-1">
           <div className="text-[12px] px-3">
-            El juego consiste en marcar todas las ubicaciones de un tablero
-            cuadriculado en las que hay minas.
+            {children}
           </div>
           <Link
-            to="/Mines"
+            to={"/" + link}
             className="rounded px-3 py-1 bg-blue-400 text-white uppercase font-bold hover:bg-blue-500"
           >
             Play

@@ -1,7 +1,6 @@
 import LetterBox from "./LetterBox";
 import { useState, useEffect } from "react";
 import Row from "./Row";
-import { write } from "fs";
 
 const WordleWordGrid = () => {
   const WORDSTR = "MORIR";
@@ -11,7 +10,7 @@ const WordleWordGrid = () => {
   const [win, setWin] = useState("playing");
 
   const handdler = (e: any) => {
-    if (win == "win") {
+    if (win !== "playing") {
       return;
     }
     let index = -1;
@@ -28,6 +27,9 @@ const WordleWordGrid = () => {
     if (e.key === "Enter" && index === -1) {
       let word = words.join("");
       const dicc = wordGrade(word);
+      if (guested.length == 4){
+        setWin("LOST")
+      }
       setWords(["", "", "", "", ""]);
       setGuested([...guested, dicc]);
     } else if (e.key === "Backspace" && index !== 0) {
@@ -36,9 +38,10 @@ const WordleWordGrid = () => {
     } else if (e.key !== "Backspace" && e.key !== "Enter" && e.key.length < 2) {
       const letter = e.key.toUpperCase()
       const aschii = letter.charCodeAt(0)
-      console.log(aschii)
-      array[index] = letter;
-      setWords([...array]);
+      if(aschii > 64 && aschii < 91){
+        array[index] = letter;
+        setWords([...array]);
+      }
     }
   };
 
@@ -64,7 +67,7 @@ const WordleWordGrid = () => {
         dicc[word.charAt(i)]--;
       }
     }
-    if (count == word.length) {
+    if (count === word.length) {
       setWin("win");
     }
     for (let i = 0; i < str.length; i++) {
@@ -104,15 +107,15 @@ const WordleWordGrid = () => {
         );
       })}
       <div className="flex gap-2">
-        {win != "playing"
+        {win !== "playing"
           ? ""
           : words.map((obj, index) => {
               return <LetterBox letter={obj} type="normal" key={index} />;
             })}
       </div>
-      {win != "playing"? (
+      {win !== "playing"? (
         <div className="flex flex-col items-center justify-center gap-2">
-          <h1 className="font-bold text-red-500 text-3xl">YOU WIN</h1>
+          <h1 className="font-bold text-red-500 text-3xl">YOU {win}</h1>
           <div className="">
             <div
               className="w-fit border-2 border-red-500 bg-red-400 text-white font-bold rounded-xl px-3 py-1 cursor-pointer hover:text-red-500 hover:bg-white duration-100"
