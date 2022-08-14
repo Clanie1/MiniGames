@@ -2,11 +2,14 @@ import image from "../img/kid.png";
 import mineLogo from "../img/Explotion.png";
 import Juego from "../components/inicio/Juego";
 import Palabra from "../img/letras.png";
+import Media from "../components/inicio/Media";
+import Linkedin from "../img/linkedin.png"
+import Github from "../img/github.png"
 
 const Home = () => {
   return (
     <div className="w-full">
-      <div className="flex w-3/4 m-auto max-w-screen-2xl py-3 justify-center">
+      <div className="flex w-3/4 m-auto max-w-screen-2xl py-3 justify-center items-center">
         <div className="">
           <h1 className="font-bold text-3xl text-black uppercase">
             Aplicacion web de
@@ -20,8 +23,24 @@ const Home = () => {
           </div>
         </div>
         <div className="">
-          <img src={require("../img/kid.png")} />
-        </div>
+          <img src={require("../img/kid.png")}/>
+      </div>
+      </div>
+      <div className=" max-w-xl m-auto flex space-x-2 border-flex">
+        <a href="https://www.linkedin.com/in/daniel-barocio-2746981a0" target= "_black">
+          <Media logo={Linkedin}>
+            <h1>
+              Daniel Barocio
+            </h1>
+          </Media>
+        </a>
+        <a href="https://github.com/Clanie1" target = "_black">
+<Media logo={Github}>
+            <h1>
+              Clanie1
+            </h1>
+          </Media>
+        </a>
       </div>
     </div>
   );

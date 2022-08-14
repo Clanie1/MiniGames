@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import Land from "./Land";
 
-interface rules {
-  setWin: Function;
-}
-const MinedLand = ({ setWin }: rules) => {
+const MinedLand = () => {
   const numberOfMines = 10;
   const rows = 10;
   const columns = 10;
@@ -84,7 +81,6 @@ const MinedLand = ({ setWin }: rules) => {
 
   useEffect(() => {
     if (squares === 0) {
-      setWin();
       setGameState(true);
     }
   }, [squares]);
